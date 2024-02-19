@@ -36,6 +36,10 @@ exports.getNextUniqueId = (callback) => {
 };
 
 
+
+//PROMISE VERSIONS
+
+
 const readCounterAsync = () => {
   return new Promise((resolve, reject) => {
     fs.readFile(exports.counterFile, (err, fileData) => {
@@ -63,14 +67,6 @@ const writeCounterAsync = (count) => {
   })
 }
 
-exports.getNextUniqueId = (callback) => {
-  readCounter((err, count) => {
-    count++;
-    writeCounter(count, (err, counterString) => {
-      callback(err, counterString);
-    });
-  });
-};
 
 const getNextUniqueId = () => {
   return readCounterAsync()
